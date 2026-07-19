@@ -8,10 +8,7 @@ import { GoogleGenAI } from "@google/genai";
 const userInput = process.argv.slice(2).join(" ");
 
 if (!userInput) {
-  console.error(
-    "\x1b[31m%s\x1b[0m",
-    "❌ Error: Please provide an input prompt.",
-  );
+  console.error("❌ Error: Please provide an input prompt.");
   console.log('Usage: node index.js "Your prompt goes here inside quotes"');
   process.exit(1);
 }
