@@ -13,8 +13,6 @@ if (!userInput) {
   process.exit(1);
 }
 
-// Initialize secure instances
-// const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const openai = new OpenAI();
 const gemini = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -23,13 +21,11 @@ async function runAggregator() {
   console.log(`Sending prompt to all 3 AI models: "${userInput}"...`);
 
   try {
-    // 1. Fetch from all models concurrently
     const [openaiResponse, geminiResponse, claudeResponse] = await Promise.all([
       openai.chat.completions
         .create({
           model: "gpt-4o-mini",
           messages: [{ role: "user", content: userInput }],
-          //   stream: true,
         })
         .catch((err) => ({ error: err.message })),
 
@@ -55,25 +51,22 @@ async function runAggregator() {
       claudeResponse.content?.[0]?.text || "Failed to fetch Claude";
     const geminiText = geminiResponse.text || "Failed to fetch Gemini";
 
+    console.log("--- 📥 Individual Responses Received ---");
+
     console.log(`\n============================================`);
     console.log('1. Response from OpenAI"...');
     console.log(`============================================`);
     console.log(openaiText);
-    // for await (const event of openaiResponse) {
-    //   if (event && event.delta) process.stdout.write(events.delta);
-    // }
 
     console.log(`\n============================================`);
     console.log('2. Response from Gemini"...');
     console.log(`============================================`);
     console.log(geminiText);
-    // console.log(`✨ Gemini:\n${geminiText.trim()}\n`);
 
     console.log(`\n============================================`);
     console.log('3. Response from Claude"...');
     console.log(`============================================`);
     console.log(claudeText);
-    // console.log(`✨ Gemini:\n${geminiText.trim()}\n`);
 
     console.log(
       "\n================ Validating and Synthesizing Responses ==================",
