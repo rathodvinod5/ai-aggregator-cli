@@ -1,6 +1,6 @@
 # Multi-LLM Aggregator CLI 🤖
 
-A lightweight Node.js Command Line Interface (CLI) application that sends a single user prompt to three major AI models simultaneously: **OpenAI (GPT-4o-mini)**, **Anthropic (claude-opus-4-6)**, and **Google (gemini-3.1-flash-lite)**. After gathering the individual responses, it routes them to a master evaluator model (**GPT-4o**) to validate accuracy, cross-reference data points, and synthesize a single, optimized final response.
+A lightweight Node.js Command Line Interface (CLI) application that sends a single user prompt to three major AI models simultaneously: **OpenAI (GPT-4o-mini)**, **Anthropic (claude-opus-4-6)**, and **Google (gemini-3.1-flash-lite)**. After gathering the individual responses, it routes them to a master evaluator claude model (**claude-opus-4-6o**) to validate accuracy, cross-reference data points, and synthesize a single, optimized final response.
 
 ---
 
