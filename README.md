@@ -20,7 +20,7 @@ Follow these steps to clone the repository, install its necessary modules, and i
 Open your terminal and clone this repository down to your local machine:
 
 ```bash
-git clone https://github.com
+git clone https://github.com/rathodvinod5/ai-aggregator-cli
 cd ai-aggregator-cli
 ```
 
